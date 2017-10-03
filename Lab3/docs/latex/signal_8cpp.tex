@@ -1,0 +1,59 @@
+\hypertarget{signal_8cpp}{}\section{/home/healy/\+Documents/\+C\+D\+D101/\+Concurrency/\+Labs/\+C\+D\+D\+Labs/\+Lab3/signal.cpp File Reference}
+\label{signal_8cpp}\index{/home/healy/\+Documents/\+C\+D\+D101/\+Concurrency/\+Labs/\+C\+D\+D\+Labs/\+Lab3/signal.\+cpp@{/home/healy/\+Documents/\+C\+D\+D101/\+Concurrency/\+Labs/\+C\+D\+D\+Labs/\+Lab3/signal.\+cpp}}
+{\ttfamily \#include \char`\"{}Semaphore.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$iostream$>$}\\*
+{\ttfamily \#include $<$thread$>$}\\*
+{\ttfamily \#include $<$mutex$>$}\\*
+Include dependency graph for signal.\+cpp\+:
+% FIG 0
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{signal_8cpp_af69e60ea49b764bb9bb6a9ef0a9a1b91}{task\+One} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$ the\+Semaphore1, std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$ the\+Semaphore2)
+\item 
+void \hyperlink{signal_8cpp_ab42d5be62abc6e36071c0e348101b89b}{task\+Two} (std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$ the\+Semaphore1, std\+::shared\+\_\+ptr$<$ \hyperlink{class_semaphore}{Semaphore} $>$ the\+Semaphore2)
+\item 
+int \hyperlink{signal_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{main} (void)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+std\+::mutex \hyperlink{signal_8cpp_aa73e018b04368e7afaded77ef0ac69db}{m}
+\item 
+int \hyperlink{signal_8cpp_acb559820d9ca11295b4500f179ef6392}{i} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\index{signal.\+cpp@{signal.\+cpp}!main@{main}}
+\index{main@{main}!signal.\+cpp@{signal.\+cpp}}
+\subsubsection[{\texorpdfstring{main(void)}{main(void)}}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{signal_8cpp_a840291bc02cba5474a4cb46a9b9566fe}{}\label{signal_8cpp_a840291bc02cba5474a4cb46a9b9566fe}
+$<$ Launch the threads \index{signal.\+cpp@{signal.\+cpp}!task\+One@{task\+One}}
+\index{task\+One@{task\+One}!signal.\+cpp@{signal.\+cpp}}
+\subsubsection[{\texorpdfstring{task\+One(std\+::shared\+\_\+ptr$<$ Semaphore $>$ the\+Semaphore1, std\+::shared\+\_\+ptr$<$ Semaphore $>$ the\+Semaphore2)}{taskOne(std::shared_ptr< Semaphore > theSemaphore1, std::shared_ptr< Semaphore > theSemaphore2)}}]{\setlength{\rightskip}{0pt plus 5cm}void task\+One (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Semaphore} $>$}]{the\+Semaphore1, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Semaphore} $>$}]{the\+Semaphore2}
+\end{DoxyParamCaption}
+)}\hypertarget{signal_8cpp_af69e60ea49b764bb9bb6a9ef0a9a1b91}{}\label{signal_8cpp_af69e60ea49b764bb9bb6a9ef0a9a1b91}
+\index{signal.\+cpp@{signal.\+cpp}!task\+Two@{task\+Two}}
+\index{task\+Two@{task\+Two}!signal.\+cpp@{signal.\+cpp}}
+\subsubsection[{\texorpdfstring{task\+Two(std\+::shared\+\_\+ptr$<$ Semaphore $>$ the\+Semaphore1, std\+::shared\+\_\+ptr$<$ Semaphore $>$ the\+Semaphore2)}{taskTwo(std::shared_ptr< Semaphore > theSemaphore1, std::shared_ptr< Semaphore > theSemaphore2)}}]{\setlength{\rightskip}{0pt plus 5cm}void task\+Two (
+\begin{DoxyParamCaption}
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Semaphore} $>$}]{the\+Semaphore1, }
+\item[{std\+::shared\+\_\+ptr$<$ {\bf Semaphore} $>$}]{the\+Semaphore2}
+\end{DoxyParamCaption}
+)}\hypertarget{signal_8cpp_ab42d5be62abc6e36071c0e348101b89b}{}\label{signal_8cpp_ab42d5be62abc6e36071c0e348101b89b}
+
+
+\subsection{Variable Documentation}
+\index{signal.\+cpp@{signal.\+cpp}!i@{i}}
+\index{i@{i}!signal.\+cpp@{signal.\+cpp}}
+\subsubsection[{\texorpdfstring{i}{i}}]{\setlength{\rightskip}{0pt plus 5cm}int i = 0}\hypertarget{signal_8cpp_acb559820d9ca11295b4500f179ef6392}{}\label{signal_8cpp_acb559820d9ca11295b4500f179ef6392}
+\index{signal.\+cpp@{signal.\+cpp}!m@{m}}
+\index{m@{m}!signal.\+cpp@{signal.\+cpp}}
+\subsubsection[{\texorpdfstring{m}{m}}]{\setlength{\rightskip}{0pt plus 5cm}std\+::mutex m}\hypertarget{signal_8cpp_aa73e018b04368e7afaded77ef0ac69db}{}\label{signal_8cpp_aa73e018b04368e7afaded77ef0ac69db}
