@@ -8,3 +8,6 @@ Signal: Semaphore.h Semaphore.cpp signal.cpp
 #this is customary and just deletes all .o files
 CLEAN:
 	rm *.o
+
+	DEBUG: DEBUGFLAGS = -DDEBUG
+	DEBUG: ALL
