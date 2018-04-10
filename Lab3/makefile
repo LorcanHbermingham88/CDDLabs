@@ -1,27 +1,22 @@
-#Lorcan Bermingham 03/10/2017
-#Makefile
-
 CC=g++
-CFLAGS= -std=c++11 -pthread
+CFLAGS= -std=c++11 -pthread -I.
+DOXYGEN = doxygen
+INDEX_SRC = docs/html/index.html
+INDEX = firefox $(INDEX_SRC)
 
-#This rule says that each .o file depends on a .cpp file of the same name
 %.o: %.cpp
 	$(CC) -c -o $@ $< $(CFLAGS) $(DEBUGFLAGS)
 
-Signal: Semaphore.h Semaphore.cpp signal.cpp
+ALL: Semaphore.o  signal.o
+	$(CC) -o signal Semaphore.o signal.o $(CFLAGS) $(DEBUGFLAGS) 
 
-DEBUG: DEBUGFLAGS = -DDEBUG
+DEBUG: DEBUGFLAGS = -g -O0
 DEBUG: ALL
 
-#this is customary and just deletes all .o files
+DOC: 
+	$(DOXYGEN) Doxyfile
+	$(INDEX)
+DOC: ALL
+
 CLEAN:
 	rm *.o
-
-	# ask about
-	#Signal: Semaphore.h Semaphore.cpp signal.cpp
-	#g++ -std=c++11 -pthread -o Run Semaphore.cpp signal.cpp Semaphore.h
-
-
-
-	DEBUG: DEBUGFLAGS = -DDEBUG
-	DEBUG: ALL

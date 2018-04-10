@@ -1,25 +1,37 @@
+//Author: Lorcan Bermingham
+//Program name: signal
+
+
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
+/*! \class Signal
+    \brief An Implementation of a Rendezvous using Semaphores
 
-void taskOne(std::shared_ptr<Semaphore> theSemaphore1, std::shared_ptr<Semaphore> theSemaphore2){
-  std::cout <<"ONE"<<std::endl;
-  std::cout << "TWO "<<std::endl;
-  theSemaphore2 -> Signal();
-  theSemaphore1 -> Wait();
-  std::cout << "THREE "<<std::endl;
-  std::cout << "FOUR "<<std::endl;
-  theSemaphore2->Signal();
+   Uses C++11 features such as mutex and condition variables to implement an example of a rendezvous for threads
+
+*/
+/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+void taskOne(std::shared_ptr<Semaphore> firstSem,std::shared_ptr<Semaphore>  secondSem){
+  std::cout <<"I ";
+  std::cout << "must ";
+  secondSem->Signal();
+  firstSem->Wait();
+  std::cout << "print ";
+  std::cout << "first"<<std::endl;
+  secondSem->Signal();
 }
-void taskTwo(std::shared_ptr<Semaphore> theSemaphore1, std::shared_ptr<Semaphore> theSemaphore2){
-  theSemaphore2->Wait();
-  std::cout <<"FIVE "<<std::endl;
-  std::cout << "SIX "<<std::endl;
-  theSemaphore1 -> Signal();
-  theSemaphore2 -> Wait();
-  std::cout << "SEVEN "<<std::endl;
-  std::cout << "EIGHT "<<std::endl;
+/*! displays a message that is split in to 2 sections to show how a rendezvous works*/
+void taskTwo(std::shared_ptr<Semaphore> firstSem, std::shared_ptr<Semaphore> secondSem){
+  secondSem->Wait();
+  std::cout <<"This ";
+  std::cout << "will ";
+  firstSem->Signal();
+  secondSem->Wait();
+  std::cout << "appear ";
+  std::cout << "second"<<std::endl;
 }
+
 int main(void){
   std::thread threadOne, threadTwo;
   std::shared_ptr<Semaphore> sem1( new Semaphore);

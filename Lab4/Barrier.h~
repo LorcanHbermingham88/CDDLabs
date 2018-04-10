@@ -1,16 +1,17 @@
+#include "Semaphore.h"
 #include <mutex>
 #include <condition_variable>
 
-/*! \class Semaphore
-    \brief A Semaphore Implementation
+/*! \class Barrier
+    \brief A Barrier Implementation
 
-   Uses C++11 features such as mutex and condition variables to implement Semaphore
+   Uses C++11 features such as mutex and condition variables to implement a Barrier class using Semaphores
 
 */
-class Semaphore
+class Barrier
 {
 private:
-    unsigned int m_uiCount; /*!< Holds the Semaphore count */
+    int count; /*!< Holds the thread count */
     std::mutex m_mutex;
     std::condition_variable m_condition;
 

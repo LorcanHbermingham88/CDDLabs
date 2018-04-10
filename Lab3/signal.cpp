@@ -1,32 +1,36 @@
+//Author: Lorcan Bermingham
+//Program name: signal
+
 #include "Semaphore.h"
 #include <iostream>
 #include <thread>
-#include <mutex>
 
-std::mutex m;   //you can use std::lock_guard if you want to be exception safe
-int i = 0;
+/*! \class Signal
+    \brief An Implementation of a mutex lock Using Semaphores
 
-void taskOne(std::shared_ptr<Semaphore> theSemaphore1, std::shared_ptr<Semaphore> theSemaphore2){
-  m.lock();
-  std::cout <<"ONE"<<std::endl;
-  i++;
-  m.unlock();
+   Uses C++11 features such as mutex and condition variables to implement a mutex lock using Semaphores
+
+*/
+/*! global count for checkIn() function*/
+int count = 1;
+/*! Only allows one thread to access the global variable 'count' at a time*/
+void checkIn(std::shared_ptr<Semaphore> theSemaphore){
+  theSemaphore->Wait();
+  std::cout << "number " << count << " logged in\n";
+  count++;
+  theSemaphore->Signal();
 }
-void taskTwo(std::shared_ptr<Semaphore> theSemaphore1, std::shared_ptr<Semaphore> theSemaphore2){
-  m.lock();
-  std::cout <<"FIVE "<<std::endl;
-  i++;
-  m.unlock();
-}
+
 int main(void){
-  std::thread threadOne, threadTwo;
-  std::shared_ptr<Semaphore> sem1( new Semaphore);
-  std::shared_ptr<Semaphore> sem2( new Semaphore);
-  /**< Launch the threads  */
-  threadOne=std::thread(taskTwo,sem1,sem2);
-  threadTwo=std::thread(taskOne,sem1,sem2);
-  std::cout << "Launched from the main  \n\n"<<std::endl;
+  std::thread threadOne, threadTwo, threadThree;
+  std::shared_ptr<Semaphore> sem( new Semaphore(1));
+  /** Launch the threads  */
+  std::cout << "Launched from the main\n";
+  threadOne = std::thread (checkIn,sem);
+  threadTwo = std::thread (checkIn,sem);
+  threadThree = std::thread (checkIn,sem);
   threadOne.join();
   threadTwo.join();
+  threadThree.join();
   return 0;
 }
